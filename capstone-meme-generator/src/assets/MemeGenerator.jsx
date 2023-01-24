@@ -1,30 +1,3 @@
-import React from "react";
-import { useEffect, useState } from "react";
-
-
-
-export default function Meme(){
-  const apiURL = 'https://api.imgflip.com/get_memes'
-  const [allMemes, setAllMemes] = useState([])
-  const [textInput, setTextInput] = useState('')
-  useEffect(function() {
-    fetch(apiURL)
-      .then((data) => data.json)
-      .then((data) =>setAllMemes(data.data.memes))
-      .catch((err) =>
-      alert('Component not mounted')
-      )
-  }, []);
-
-
-}
-
-
-
-
-
-
-
 
 
 
