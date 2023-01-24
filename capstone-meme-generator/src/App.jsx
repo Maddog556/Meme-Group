@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import MemeGenerator from './assets/MemeGenerator'
 
 function App(){
