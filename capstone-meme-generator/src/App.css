@@ -1,0 +1,36 @@
+.meme {
+  position: relative;
+  width: 72%;
+  margin: auto;
+}
+ 
+.meme > img {
+  width: 100%;
+}
+ 
+.meme > h2 {
+  position: absolute;
+  width: 80%;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 15px 0;
+  padding: 0 5px;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: black;
+  letter-spacing: 1px;
+}
+ 
+.meme > .bottom {
+  bottom: 0;
+}
+ 
+.meme > .top {
+  top: 0;
+}
+ 
+form {
+  padding-top: 25px;
+  text-align: center;
+}
