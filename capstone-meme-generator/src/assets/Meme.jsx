@@ -1,14 +1,19 @@
 import React from "react"
 import MemeList from "./MemeList"
 
-export default function Meme() {
+export default function Memes() {
+
+    
     const [meme, setMeme] = React.useState({
         topText: "",
         bottomText: "",
-        randomImage: "http://i.imgflip.com/1bij.jpg" 
+        randomImage: "http://i.imgflip.com/1bij.jpg", 
+        editMode:'false'
     })
+
     const [allMemes, setAllMemes] = React.useState([])
     const [memeList, setMemeList] = React.useState([])
+    
     
     React.useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
@@ -37,6 +42,7 @@ export default function Meme() {
     function handleSave(event){
         event.preventDefault()
         console.log(meme)
+        console.log(memeList)
         setMemeList(prevMemeList => {
             return[...prevMemeList,
             {
@@ -47,15 +53,7 @@ export default function Meme() {
         })
         setMeme(meme)
     }
-    function handleChange(event){
-        event.preventDefault()
-        setMemeList(prevMemeList => {
-            return[...prevMemeList,
-                
-
-            ]
-        })
-    }
+  
     // delete the meme
     const removeElement = (index) =>{
         setMemeList(prevMemeList => {
@@ -69,8 +67,10 @@ export default function Meme() {
     <MemeList key = {index} {...meme} 
     
     />
-    <button className="editList">Edited text</button>
+    
+                                            {/* making a funtcion here */}
     <button className="deleteList" onClick={() => removeElement(index)}>Delete Here</button>
+    <button className="editList">Edit text</button>
     </div>)})
     
     
