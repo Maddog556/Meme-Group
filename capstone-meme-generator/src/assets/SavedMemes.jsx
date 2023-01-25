@@ -1,4 +1,7 @@
 import React from "react";
+import axios from "axios";
+
+const url = "https://api.imgflip.com/get_memes"
 
 class SavedMemes extends React.Component {
 
@@ -59,8 +62,5 @@ class SavedMemes extends React.Component {
     )
   }
 }
-
-
-
 
 export default SavedMemes
