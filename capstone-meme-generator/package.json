@@ -9,9 +9,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^1.2.4",
+=======
+    "axios": "^0.24.0",
+>>>>>>> main
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-uuid": "^2.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
