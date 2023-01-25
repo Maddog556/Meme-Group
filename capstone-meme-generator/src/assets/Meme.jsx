@@ -1,4 +1,5 @@
 import React from "react"
+import MemeList from "./MemeList"
 
 export default function Meme() {
     const [meme, setMeme] = React.useState({
@@ -7,6 +8,7 @@ export default function Meme() {
         randomImage: "http://i.imgflip.com/1bij.jpg" 
     })
     const [allMemes, setAllMemes] = React.useState([])
+    const [memeList, setMemeList] = React.useState([])
     
     React.useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
@@ -31,6 +33,46 @@ export default function Meme() {
             [name]: value
         }))
     }
+    // save the meme
+    function handleSave(event){
+        event.preventDefault()
+        console.log(meme)
+        setMemeList(prevMemeList => {
+            return[...prevMemeList,
+            {
+                topText: meme.topText,
+                bottomText: meme.bottomText,
+                randomImage: meme.randomImage
+            }]
+        })
+        setMeme(meme)
+    }
+    function handleChange(event){
+        event.preventDefault()
+        setMemeList(prevMemeList => {
+            return[...prevMemeList,
+                
+
+            ]
+        })
+    }
+    // delete the meme
+    const removeElement = (index) =>{
+        setMemeList(prevMemeList => {
+            return prevMemeList.filter((_, i) =>  i !== index)
+        })
+    }
+    //   showing the meme and buttons 
+    const memelistElements = memeList.map((meme,index) =>{
+    return(
+        <div>
+    <MemeList key = {index} {...meme} 
+    
+    />
+    <button className="editList">Edited text</button>
+    <button className="deleteList" onClick={() => removeElement(index)}>Delete Here</button>
+    </div>)})
+    
     
     return (
         <main>
@@ -63,6 +105,10 @@ export default function Meme() {
                 <h2 className="meme--text top">{meme.topText}</h2>
                 <h2 className="meme--text bottom">{meme.bottomText}</h2>
             </div>
+            <div> 
+                <button className="saveBtn" onClick={handleSave}>Save Your Meme</button>
+            </div>
+            {memelistElements}
         </main>
     )
 }
