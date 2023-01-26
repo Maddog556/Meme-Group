@@ -108,10 +108,9 @@ export default function Memes() {
             <div> 
                 <button className="saveBtn" onClick={handleSave}>Save Your Meme</button>
             </div>
-
             <div className="list-container">
             {memelistElements}
             </div>
-            </main>
+        </main>
     )
 }
