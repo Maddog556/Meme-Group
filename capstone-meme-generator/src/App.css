@@ -1,14 +1,98 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Karla", sans-serif;
+  margin: 0;
+  background: #162d20;
+}
+
+main {
+  padding: 36px;
+}
+
+.header {
+  display: flex; 
+  height: 195px;
+  background:url(./images/green.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+
+ 
+}
+.header--title{
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin: auto;
+  height: 195px;
+  width: 418px;
+  background-image: url(./images/meme-maker2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.header--project {
+  padding-top: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.form {
+  display: grid;
+  grid-template: 50px 50px / 1fr 1fr;
+  gap: 17px;
+  margin-bottom: 17px;
+}
+
+.form--input {
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  border: 1px solid #D5D4D8;
+  text-indent: 5px;
+}
+
+.form--button {
+  grid-column: 1 / -1;
+  font-family: "Karla", sans-serif;
+  border-radius: 5px;
+  background: linear-gradient(90.41deg, #474647 1.14%, #7c757e 100%);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-color: #4B5563;
+  
+}
+.form--button:hover{
+  background: linear-gradient(90.75deg, #474647, white);
+} 
+
 .meme {
   position: relative;
-  width: 72%;
+  display: flex;
+  flex-direction: column;
+  border: 20px solid white;
+  border-top-left-radius: 90px;
+  border-bottom-right-radius: 90px;
+  border-top-color:#7df88a ;
+  border-bottom-color: #7df88a;
+}
+
+.meme--image {
+  max-width: 80%;
+  height:auto;
+  width: auto;
+  border-radius: 10px;
+  justify-content: center;
   margin: auto;
 }
- 
-.meme > img {
-  width: 100%;
-}
- 
-.meme > h2 {
+
+.meme--text {
   position: absolute;
   width: 80%;
   text-align: center;
@@ -16,21 +100,119 @@
   transform: translateX(-50%);
   margin: 15px 0;
   padding: 0 5px;
-  font-size: 1em;
+  font-family: sans-serif;
+  font-size: 2em;
   text-transform: uppercase;
   color: white;
   letter-spacing: 1px;
+  text-shadow:
+      2px 2px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      0 2px 0 #000,
+      2px 0 0 #000,
+      0 -2px 0 #000,
+      -2px 0 0 #000,
+      2px 2px 5px #000;
 }
- 
-.meme > .bottom {
+.saveBtn{
+  margin: auto;
+}
+.bottom {
   bottom: 0;
 }
- 
-.meme > .top {
+
+.top {
   top: 0;
 }
- 
-form {
-  padding-top: 25px;
-  text-align: center;
+
+
+.saved-memes{
+  height: 100px;
+  width: 100px;
+}
+.list{
+  border: 1px solid transparent;
+  height: 308px;
+  width: 350px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border-bottom: 3px solid white;
+}
+.meme--text{
+  font-size: 25px;
+}
+
+.saved-topText, 
+.saved-bottomText{
+  padding-top: 29px;
+  /* padding-bottom: 25px; */
+  display: flex;
+  font-size: 25px;
+  justify-content: space-evenly;
+  color: white;
+  margin: 0 0 258px 0;
+}
+.list-container{
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr/auto;
+  height: 100%;
+  row-gap: 35px;
+  column-gap: 35px;
+  width: 100%;
+  padding-top: 55px;
+}
+
+.saved-images{
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  text-transform: uppercase;
+  width: fit-content;
+  justify-content: space-evenly;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  filter: brightness(110%);
+}
+.saved-images:hover{
+ border: 7px solid #7df88a;
+}
+
+
+button:hover{
+  background-color: #379683;
+  border: 2px solid #05386B ;
+}
+button{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+
+
+  /* .list-container {
+    display: grid;
+    columns: 2;
+    gap: 0px 0px;
+  } */
+  
+@media only screen and (max-width: 375px){
+  .list-container{
+    grid-template-columns: 1fr;
+    width: 200px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .list-container{
+    grid-template-columns: 1fr;
+
+  }
+}
+@media only screen and (min-width: 1025px){
+  .list-container{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
