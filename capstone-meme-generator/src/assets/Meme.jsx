@@ -1,19 +1,23 @@
 import React from "react"
 import MemeList from "./MemeList"
+import {v4 as uuidv4} from 'uuid';
 
 export default function Memes() {
 
-    
-    const [meme, setMeme] = React.useState({
-        key:"index",
+    const initState = {
         topText: "",
         bottomText: "",
         randomImage: "http://i.imgflip.com/1bij.jpg", 
-        editMode:'false'
-    })
+        id: ""
+    }
+
+    
+    const [meme, setMeme] = React.useState(initState)
+    
 
     const [allMemes, setAllMemes] = React.useState([])
     const [memeList, setMemeList] = React.useState([])
+    const [isEdit, setIsEdit] = React.useState(false)
     
     
     React.useEffect(() => {
@@ -39,23 +43,45 @@ export default function Memes() {
             [name]: value
         }))
     }
+   
+
+    //TODO: write edit funciton. Function should update state that manages inputs, update edit mode
+    function handleEdit(memeIndex){
+        let memeToEdit = memeList.find((meme, index) => index === memeIndex )
+        setMeme(prev => ({...memeToEdit}))
+        setIsEdit(true)
+    }
 
     // save the meme
     function handleSave(event){
         event.preventDefault()
         console.log(meme)
         console.log(memeList)
-        setMemeList(prevMemeList => {
+        if (isEdit === false){setMemeList(prevMemeList => {
             return[...prevMemeList,
             {
                 topText: meme.topText,
                 bottomText: meme.bottomText,
                 randomImage: meme.randomImage,
-                editMode: meme.editMode
+                id: uuidv4()
             }]
-        })
-        setMeme(meme)
+        })} else if (isEdit === true){
+            setMemeList(prevMemeList => {
+                let newList = prevMemeList.map(item => {
+                    if (item.id === meme.id){
+                        return meme
+                    } else {
+                        return item
+                    }
+                })
+                return newList
+            })
+            setIsEdit(false)
+        }
+        //TODO update meme state to empty
+        setMeme(initState)
     }
+    
   
     // delete the meme
     const removeElement = (index) =>{
@@ -65,16 +91,16 @@ export default function Memes() {
     }
     
     //   showing the meme and buttons 
-    const memelistElements = memeList.map((meme,index) =>{
+    const memelistElements = memeList?.map((meme,index) =>{
     return(
-        <div>
-    <MemeList key = {index} {...meme} 
+        <div key={index}>
+    <MemeList {...meme} 
     
     />
     
-                                            {/* making a funtcion here */}
-    <button className="deleteList" onClick={() => removeElement(index)}>Delete Here</button>
-   
+                                            {/* making a inline function */}
+    <button className="deleteList" onClick={() => removeElement(index)}>Delete</button>
+   <button className="editList" onClick={ () => handleEdit(index)}>Edit Text</button>
     </div>)})
     
     
