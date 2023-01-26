@@ -79,7 +79,7 @@ export default function Memes() {
     
     
     return (
-        <main>
+        <main >
             <div className="form">
                 <input 
                     type="text"
@@ -112,7 +112,10 @@ export default function Memes() {
             <div> 
                 <button className="saveBtn" onClick={handleSave}>Save Your Meme</button>
             </div>
+
+            <div className="list-container">
             {memelistElements}
-        </main>
+            </div>
+            </main>
     )
 }
