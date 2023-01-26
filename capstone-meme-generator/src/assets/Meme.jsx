@@ -3,7 +3,7 @@ import MemeList from "./MemeList"
 import {v4 as uuidv4} from 'uuid';
 
 export default function Memes() {
-
+//this is meme blueprint
     const initState = {
         topText: "",
         bottomText: "",
@@ -17,6 +17,7 @@ export default function Memes() {
 
     const [allMemes, setAllMemes] = React.useState([])
     const [memeList, setMemeList] = React.useState([])
+    //this is the boolean for meme
     const [isEdit, setIsEdit] = React.useState(false)
     
     
@@ -35,7 +36,7 @@ export default function Memes() {
         }))
         
     }
-    
+    //this is for the input boxes so you can type in
     function handleChange(event) {
         const {name, value} = event.target
         setMeme(prevMeme => ({
@@ -67,6 +68,7 @@ export default function Memes() {
             }]
         })} else if (isEdit === true){
             setMemeList(prevMemeList => {
+                //map brings back a array and return newlist replacing it in prevmemelist
                 let newList = prevMemeList.map(item => {
                     if (item.id === meme.id){
                         return meme
