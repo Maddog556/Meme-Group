@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 * {
   box-sizing: border-box;
 }
@@ -127,7 +126,6 @@ main {
 .top {
   top: 0;
 }
-<<<<<<< HEAD
 
 
 .saved-memes{
@@ -148,15 +146,16 @@ main {
 
 .saved-topText, 
 .saved-bottomText{
+  padding-top: 29px;
+  /* padding-bottom: 25px; */
   display: flex;
   font-size: 25px;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   color: white;
+  margin: 0 0 258px 0;
 }
 .list-container{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr/auto;
   height: 100%;
   row-gap: 35px;
@@ -200,6 +199,20 @@ button{
     gap: 0px 0px;
   } */
   
-=======
->>>>>>> main
->>>>>>> 45897f443e715770d6bf3207f875c09f0fd89d38
+@media only screen and (max-width: 375px){
+  .list-container{
+    grid-template-columns: 1fr;
+    width: 200px;
+  }
+}
+@media only screen and (max-width: 768px){
+  .list-container{
+    grid-template-columns: 1fr;
+
+  }
+}
+@media only screen and (min-width: 1025px){
+  .list-container{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
