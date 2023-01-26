@@ -5,6 +5,7 @@ export default function Memes() {
 
     
     const [meme, setMeme] = React.useState({
+        key:"index",
         topText: "",
         bottomText: "",
         randomImage: "http://i.imgflip.com/1bij.jpg", 
@@ -38,6 +39,7 @@ export default function Memes() {
             [name]: value
         }))
     }
+
     // save the meme
     function handleSave(event){
         event.preventDefault()
@@ -48,7 +50,8 @@ export default function Memes() {
             {
                 topText: meme.topText,
                 bottomText: meme.bottomText,
-                randomImage: meme.randomImage
+                randomImage: meme.randomImage,
+                editMode: meme.editMode
             }]
         })
         setMeme(meme)
@@ -60,6 +63,7 @@ export default function Memes() {
             return prevMemeList.filter((_, i) =>  i !== index)
         })
     }
+    
     //   showing the meme and buttons 
     const memelistElements = memeList.map((meme,index) =>{
     return(
@@ -70,7 +74,7 @@ export default function Memes() {
     
                                             {/* making a funtcion here */}
     <button className="deleteList" onClick={() => removeElement(index)}>Delete Here</button>
-    <button className="editList">Edit text</button>
+   
     </div>)})
     
     
